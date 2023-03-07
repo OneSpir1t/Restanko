@@ -1,0 +1,73 @@
+﻿<Window x:Class="Restanko.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restanko.Windows"
+        mc:Ignorable="d"
+        Title="Restanko" Height="650" Width="1100" Closing="Window_Closing" SizeChanged="Window_SizeChanged" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Width="200"/>
+            <Label Grid.Column="1" Name="FIO_Label" HorizontalAlignment="Right"/>
+            <Button Grid.Column="2" Content="Виды ремонта" Name="RepairType_Button"/>
+            <Button x:Name="Machine_Button" Grid.Column="3" Content="Станки" Click="Machine_Button_Click"/>
+            <Button Content="Выйти" Grid.Column="4" Name="Exit_Button" Click="Exit_Button_Click"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Grid.Column="0" SelectedIndex="0" x:Name="Sort_Combobox" SelectionChanged="Sort_Combobox_SelectionChanged"/>
+            <ComboBox Name="Filter_Combobox" SelectedIndex="0" Grid.Column="1" SelectionChanged="Filter_Combobox_SelectionChanged"/>
+            <Label Grid.Column="3" Name="CountDisplay_Label"/>
+        </Grid>
+        <ListView Grid.Row="2" SelectionMode="Single" ScrollViewer.CanContentScroll="False" x:Name="Repair_ListView" SelectionChanged="Repair_ListView_SelectionChanged" MouseDoubleClick="Repair_ListView_MouseDoubleClick"/>
+        <Label Name="NotFound_Label" Grid.Row="2" Content="Ничего не найдено..." VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="48"/>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Добавить" Name="AddRepair_Button" Click="AddRepair_Button_Click"/>
+        </Grid>
+        <Grid x:Name="EditTypeRepair_Grid" Grid.Column="1" Width="300" Grid.Row="2">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="Виды ремонта"/>
+                <CheckBox IsChecked="True" Name="TypeRepairComboboxEnable" Content="Включен" Margin="5,0,0,0"/>
+                <ComboBox IsEnabled="{Binding ElementName=TypeRepairComboboxEnable, Path=IsChecked}" DisplayMemberPath="Name" SelectedIndex="0" x:Name="TypeRapair_Combobox" MinWidth="190" SelectionChanged="TypeRapair_Combobox_SelectionChanged" IsEnabledChanged="TypeRapair_Combobox_IsEnabledChanged"/>
+                <TextBox x:Name="RepairTypeName_Textbox"/>
+                <TextBox x:Name="CostRepairType_Textbox"/>
+                <TextBox x:Name="DurationRepairType_Textbox"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="AddTypeRepair_Button" Content="Добавить" Click="AddTypeRepair_Button_Click"/>
+                    <Button x:Name="EditTypeRepair_Button" Content="Изменить" Click="EditTypeRepair_Button_Click"/>
+                </StackPanel>
+                <Button x:Name="RemoveTypeRepair_Button" Content="Удалить" HorizontalAlignment="Center" Click="RemoveTypeRepair_Button_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="Restanko.Windows.MachineWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restanko.Windows"
+        mc:Ignorable="d"
+        Title="MachineWindow" Height="650" Width="900" SizeChanged="Window_SizeChanged">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox/>
+            <ComboBox SelectedIndex="0" Name="Sort_Combobox" Grid.Column="2" SelectionChanged="Sort_Combobox_SelectionChanged"/>
+            <ComboBox SelectedIndex="0" Name="Filter_Combobox" Grid.Column="3" SelectionChanged="Filter_Combobox_SelectionChanged"/>
+        </Grid>
+        <ListView ScrollViewer.CanContentScroll="False" SelectionMode="Single" Grid.Row="1" x:Name="MachineView_ListView" SelectionChanged="MachineView_ListView_SelectionChanged" MouseDoubleClick="MachineView_ListView_MouseDoubleClick"/>
+        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Ничего не найдено..." Name="NotFound_Label" FontSize="36"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddMachine_Button" Content="Добавить" Click="AddMachine_Button_Click"/>
+            <Button x:Name="Exit_Button" Grid.Column="4" Content="Выйти" Click="Exit_Button_Click"/>
+        </Grid>
+    </Grid>
+</Window>
