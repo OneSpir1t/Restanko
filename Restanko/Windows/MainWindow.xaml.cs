@@ -29,6 +29,8 @@ namespace Restanko.Windows
 
         private DateOnly date;
 
+        public User User { get; set; }
+
         public MainWindow(User user)
         {
             InitializeComponent();
@@ -118,7 +120,7 @@ namespace Restanko.Windows
 
         private void AddRepair_Button_Click(object sender, RoutedEventArgs e)
         {
-            var aoerw = new AddOrEditRepairWindow(null).ShowDialog();
+            var aoerw = new AddOrEditRepairWindow(null, User).ShowDialog();
             UpdateRepair();
         }
 
@@ -142,7 +144,8 @@ namespace Restanko.Windows
         {
             if(currentRepair != null)
             {
-                var aoerw = new AddOrEditRepairWindow(currentRepair).ShowDialog();
+                var aoerw = new AddOrEditRepairWindow(currentRepair, User).ShowDialog();
+                
                 UpdateRepair();
             }
         }
@@ -265,6 +268,19 @@ namespace Restanko.Windows
             RepairTypeName_Textbox.Text = default;
             CostRepairType_Textbox.Text = default;
             DurationRepairType_Textbox.Text = default;
+        }
+
+        private void RepairType_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (RepairType_Button.Content.ToString() == "Виды ремонта")
+            {
+                EditTypeRepair_Grid.Width = 300;
+            }    
+        }
+
+        private void GoBack_Button_Click(object sender, RoutedEventArgs e)
+        {
+            EditTypeRepair_Grid.Width = 0;
         }
     }
 }

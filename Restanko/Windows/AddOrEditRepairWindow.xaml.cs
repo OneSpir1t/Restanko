@@ -30,7 +30,7 @@ namespace Restanko.Windows
 
         private DateOnly dateEnd = new DateOnly();
 
-        public AddOrEditRepairWindow(Repair repair)
+        public AddOrEditRepairWindow(Repair repair, User user)
         {
             InitializeComponent();
             Repair = repair;
@@ -38,6 +38,13 @@ namespace Restanko.Windows
             Machine_Combobox.ItemsSource = RestankoContext.restankoContext.Machines.ToList();
             RepairType_Combobox.Items.Clear();
             RepairType_Combobox.ItemsSource = RestankoContext.restankoContext.Repairtypes.ToList();
+            if(user != null )
+            {
+                if(user.RoleId != 1)
+                {
+                    DeleteRepair_Button.Visibility = Visibility.Hidden;
+                }
+            }
             if (Repair != null)
             {
                 AddOrEditRepair_Button.Content = "Изменить";
@@ -48,6 +55,7 @@ namespace Restanko.Windows
             }
             else
             {
+                DeleteRepair_Button.Visibility = Visibility.Hidden;
                 int year = Int32.Parse(DateTime.Now.ToString("yyyy"));
                 int month = Int32.Parse(DateTime.Now.ToString("MM"));
                 int day = Int32.Parse(DateTime.Now.ToString("dd"));
@@ -62,6 +70,19 @@ namespace Restanko.Windows
             Duration_Label.Content = currentRepairType.Duration + " дн(я/ей)";
             dateEnd = date.AddDays(currentRepairType.Duration);
             DateEndofRepair_Label.Content = dateEnd;
+        }
+
+        private void DeleteRepair_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            var msg = MessageBox.Show("Вы действительно хотите удалить заказ на ремонт", "Уведомление", MessageBoxButton.YesNo);
+            if (msg == MessageBoxResult.Yes)
+            {
+                RestankoContext.restankoContext.Remove(Repair);
+                RestankoContext.restankoContext.SaveChanges();
+                Close();
+            }
+
         }
 
         private void RepairType_Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

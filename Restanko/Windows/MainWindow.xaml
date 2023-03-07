@@ -28,7 +28,7 @@
             </Grid.ColumnDefinitions>
             <TextBox Width="200"/>
             <Label Grid.Column="1" Name="FIO_Label" HorizontalAlignment="Right"/>
-            <Button Grid.Column="2" Content="Виды ремонта" Name="RepairType_Button"/>
+            <Button Grid.Column="2" Content="Виды ремонта" Name="RepairType_Button" Click="RepairType_Button_Click"/>
             <Button x:Name="Machine_Button" Grid.Column="3" Content="Станки" Click="Machine_Button_Click"/>
             <Button Content="Выйти" Grid.Column="4" Name="Exit_Button" Click="Exit_Button_Click"/>
         </Grid>
@@ -54,7 +54,7 @@
             </Grid.ColumnDefinitions>
             <Button Content="Добавить" Name="AddRepair_Button" Click="AddRepair_Button_Click"/>
         </Grid>
-        <Grid x:Name="EditTypeRepair_Grid" Grid.Column="1" Width="300" Grid.Row="2">
+        <Grid x:Name="EditTypeRepair_Grid" Grid.Column="1" Width="0" Grid.Row="2">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Label Content="Виды ремонта"/>
                 <CheckBox IsChecked="True" Name="TypeRepairComboboxEnable" Content="Включен" Margin="5,0,0,0"/>
@@ -65,9 +65,10 @@
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="AddTypeRepair_Button" Content="Добавить" Click="AddTypeRepair_Button_Click"/>
                     <Button x:Name="EditTypeRepair_Button" Content="Изменить" Click="EditTypeRepair_Button_Click"/>
+                    <Button x:Name="RemoveTypeRepair_Button" Content="Удалить" HorizontalAlignment="Center" Click="RemoveTypeRepair_Button_Click"/>
                 </StackPanel>
-                <Button x:Name="RemoveTypeRepair_Button" Content="Удалить" HorizontalAlignment="Center" Click="RemoveTypeRepair_Button_Click"/>
             </StackPanel>
+            <Button x:Name="GoBack_Button" VerticalAlignment="Bottom" Content="Cкрыть панель" HorizontalAlignment="Right" Click="GoBack_Button_Click" Margin="5,5,20,5"/>
         </Grid>
     </Grid>
 </Window>

@@ -37,7 +37,8 @@
             <Label Content="Время ремонта:"/>
             <Label Name="Duration_Label"/>
             <Label Name="DateEndofRepair_Label"/>
-            <Button Content="Добавить"  Name="AddOrEditRepair_Button" Click="AddOrEditRepair_Button_Click" />
+            <Button HorizontalAlignment="Center" Content="Добавить"  Name="AddOrEditRepair_Button" Click="AddOrEditRepair_Button_Click" />
+            <Button x:Name="DeleteRepair_Button" HorizontalAlignment="Center" Content="Удалить" Click="DeleteRepair_Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>
