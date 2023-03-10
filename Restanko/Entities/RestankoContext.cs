@@ -16,6 +16,7 @@ namespace Restanko.Entities
         public RestankoContext(DbContextOptions<RestankoContext> options)
             : base(options)
         {
+            
         }
 
         public virtual DbSet<Country> Countries { get; set; } = null!;

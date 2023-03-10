@@ -36,11 +36,16 @@ namespace Restanko.Windows
             InitializeComponent();
             if (user != null)
             {
+                User = user;
                 FIO_Label.Content = string.Join(" ", user.Surname, user.Name, user.Patryonomic);
                 if(user.RoleId != 1)
                 {
                     Machine_Button.Visibility = Visibility.Hidden;
                     RepairType_Button.Visibility = Visibility.Hidden;
+                }
+                if(user.RoleId != 2)
+                {
+                    ReportPDF_Button.Visibility = Visibility.Hidden;
                 }
             }
             UpdateTypeRepair();
@@ -144,8 +149,7 @@ namespace Restanko.Windows
         {
             if(currentRepair != null)
             {
-                var aoerw = new AddOrEditRepairWindow(currentRepair, User).ShowDialog();
-                
+                var aoerw = new AddOrEditRepairWindow(currentRepair, User).ShowDialog();                
                 UpdateRepair();
             }
         }
@@ -281,6 +285,11 @@ namespace Restanko.Windows
         private void GoBack_Button_Click(object sender, RoutedEventArgs e)
         {
             EditTypeRepair_Grid.Width = 0;
+        }
+
+        private void ReportPDF_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var rw = new ReportWindow(User).ShowDialog();
         }
     }
 }

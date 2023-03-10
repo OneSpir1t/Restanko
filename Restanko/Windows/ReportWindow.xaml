@@ -1,0 +1,18 @@
+﻿<Window x:Class="Restanko.Windows.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restanko.Windows"
+        mc:Ignorable="d"
+        Title="Restanko" Height="450" Width="800">
+    <Grid>
+        <Label Content="Формирование отчёта" HorizontalAlignment="Center"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Выберите начальную дату:"/>
+            <DatePicker Name="StartDate_DatePicker"/>
+            <DatePicker Name="EndDate_DatePicker"/>
+            <Button Content="Сформировать очёт" Name="CreateReport_Button" Click="CreateReport_Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

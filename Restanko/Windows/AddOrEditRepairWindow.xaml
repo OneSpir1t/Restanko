@@ -40,5 +40,6 @@
             <Button HorizontalAlignment="Center" Content="Добавить"  Name="AddOrEditRepair_Button" Click="AddOrEditRepair_Button_Click" />
             <Button x:Name="DeleteRepair_Button" HorizontalAlignment="Center" Content="Удалить" Click="DeleteRepair_Button_Click"/>
         </StackPanel>
+        <Button Content="Назад" x:Name="Exit_button" Click="Exit_button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
     </Grid>
 </Window>

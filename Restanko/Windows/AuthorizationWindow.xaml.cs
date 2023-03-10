@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore.Storage;
 using Restanko.Entities;
 using System;
 using System.Collections.Generic;
@@ -26,7 +29,7 @@ namespace Restanko.Windows
         public AuthorizationWindow()
         {
             InitializeComponent();
-            RestankoContext.restankoContext.GetDependencies();
+            RestankoContext.restankoContext.Database.OpenConnection();
             //User = RestankoContext.restankoContext.Users.FirstOrDefault(u => u.Login == Login_TextBox.Text && u.Password == Password_TextBox.Text);
         }
 

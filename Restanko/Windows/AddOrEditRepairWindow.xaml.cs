@@ -24,7 +24,6 @@ namespace Restanko.Windows
 
         private Repairtype currentRepairType { get; set; }
 
-        private int year, month, day;
 
         private DateOnly date = new DateOnly();
 
@@ -83,6 +82,11 @@ namespace Restanko.Windows
                 Close();
             }
 
+        }
+
+        private void Exit_button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
         private void RepairType_Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

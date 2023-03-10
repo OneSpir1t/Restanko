@@ -29,6 +29,7 @@
             <TextBox Width="200"/>
             <Label Grid.Column="1" Name="FIO_Label" HorizontalAlignment="Right"/>
             <Button Grid.Column="2" Content="Виды ремонта" Name="RepairType_Button" Click="RepairType_Button_Click"/>
+            <Button Grid.Column="2" Content="Отчёт" Name="ReportPDF_Button" Click="ReportPDF_Button_Click"/>
             <Button x:Name="Machine_Button" Grid.Column="3" Content="Станки" Click="Machine_Button_Click"/>
             <Button Content="Выйти" Grid.Column="4" Name="Exit_Button" Click="Exit_Button_Click"/>
         </Grid>
