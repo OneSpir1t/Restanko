@@ -8,7 +8,6 @@ using System.Text;
 using Microsoft.Win32;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System.Text.Encodings;
 using System;
 using System.Windows.Media.Imaging;
 using System.Linq;
