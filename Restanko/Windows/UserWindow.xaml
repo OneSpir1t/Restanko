@@ -60,9 +60,12 @@
                 <Label Content="Виды ремонта"/>
                 <CheckBox IsChecked="True" Name="TypeRepairComboboxEnable" Content="Включен" Margin="5,0,0,0"/>
                 <ComboBox IsEnabled="{Binding ElementName=TypeRepairComboboxEnable, Path=IsChecked}" DisplayMemberPath="Name" SelectedIndex="0" x:Name="TypeRapair_Combobox" MinWidth="190" SelectionChanged="TypeRapair_Combobox_SelectionChanged" IsEnabledChanged="TypeRapair_Combobox_IsEnabledChanged"/>
+                <Label Content="Наименование вида:"/>
                 <TextBox x:Name="RepairTypeName_Textbox"/>
-                <TextBox x:Name="CostRepairType_Textbox" PreviewTextInput="CostRepairType_Textbox_PreviewTextInput" TextChanged="CostRepairType_Textbox_TextChanged"/>
-                <TextBox x:Name="DurationRepairType_Textbox" PreviewTextInput="DurationRepairType_Textbox_PreviewTextInput" TextChanged="DurationRepairType_Textbox_TextChanged"/>
+                <Label Content="Стоимость"/>
+                <TextBox x:Name="CostRepairType_Textbox" PreviewTextInput="CostRepairType_Textbox_PreviewTextInput" MaxLength="12"/>
+                <Label Content="Продолжительность дн(/я/ей)"/>
+                <TextBox x:Name="DurationRepairType_Textbox" MinWidth="25" PreviewTextInput="DurationRepairType_Textbox_PreviewTextInput" HorizontalAlignment="Center" VerticalAlignment="Center" MaxLength="2"/>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="AddTypeRepair_Button" Content="Добавить" Click="AddTypeRepair_Button_Click"/>
                     <Button x:Name="EditTypeRepair_Button" Content="Изменить" Click="EditTypeRepair_Button_Click"/>

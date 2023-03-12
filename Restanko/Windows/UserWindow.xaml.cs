@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -204,14 +205,17 @@ namespace Restanko.Windows
                 if (!string.IsNullOrEmpty(RepairTypeName_Textbox.Text)
                 && !string.IsNullOrEmpty(CostRepairType_Textbox.Text) && !string.IsNullOrEmpty(DurationRepairType_Textbox.Text))
                 {
-                    repairtype = new Repairtype();
-                    repairtype.Name = RepairTypeName_Textbox.Text;
-                    repairtype.Cost = int.Parse(CostRepairType_Textbox.Text);
-                    repairtype.Duration = int.Parse(DurationRepairType_Textbox.Text);
-                    RestankoContext.restankoContext.Add(repairtype);
-                    RestankoContext.restankoContext.SaveChanges();
-                    ClearTypeRepairTextBox();
-                    UpdateTypeRepair();
+                    if (TryInt(CostRepairType_Textbox.Text) && TryInt(DurationRepairType_Textbox.Text))
+                    {
+                        repairtype = new Repairtype();
+                        repairtype.Name = RepairTypeName_Textbox.Text;
+                        repairtype.Cost = int.Parse(CostRepairType_Textbox.Text);
+                        repairtype.Duration = int.Parse(DurationRepairType_Textbox.Text);
+                        RestankoContext.restankoContext.Add(repairtype);
+                        RestankoContext.restankoContext.SaveChanges();
+                        ClearTypeRepairTextBox();
+                        UpdateTypeRepair();
+                    }
                 }
                 
             }
@@ -226,11 +230,14 @@ namespace Restanko.Windows
             if(!string.IsNullOrEmpty(RepairTypeName_Textbox.Text)
                 && !string.IsNullOrEmpty(CostRepairType_Textbox.Text) && !string.IsNullOrEmpty(DurationRepairType_Textbox.Text))
             { 
-                currentRepairType.Name = RepairTypeName_Textbox.Text;
-                currentRepairType.Cost = int.Parse(CostRepairType_Textbox.Text);
-                currentRepairType.Duration = int.Parse(DurationRepairType_Textbox.Text);
-                RestankoContext.restankoContext.SaveChanges();
-                UpdateTypeRepair();
+                if(TryInt(CostRepairType_Textbox.Text) && TryInt(DurationRepairType_Textbox.Text))
+                {
+                    currentRepairType.Name = RepairTypeName_Textbox.Text;
+                    currentRepairType.Cost = int.Parse(CostRepairType_Textbox.Text);
+                    currentRepairType.Duration = int.Parse(DurationRepairType_Textbox.Text);
+                    RestankoContext.restankoContext.SaveChanges();
+                    UpdateTypeRepair();
+                }
             }
 
         }
@@ -309,37 +316,17 @@ namespace Restanko.Windows
             e.Handled = "0123456789".IndexOf(e.Text) < 0;
         }
 
-        private void CostRepairType_Textbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (CostRepairType_Textbox.IsFocused)
-            {
-                int num;
-                string clipdata = Clipboard.GetText();
-                bool tryint = int.TryParse(clipdata, out num);
-                if (CostRepairType_Textbox.Text.Contains(clipdata) && !tryint)
-                {
-                    CostRepairType_Textbox.Clear();
-                }
-            }
-        }
-
-        private void DurationRepairType_Textbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (DurationRepairType_Textbox.IsFocused)
-            {
-                int num;
-                string clipdata = Clipboard.GetText();
-                bool tryint = int.TryParse(clipdata, out num);
-                if (DurationRepairType_Textbox.Text.Contains(clipdata) && !tryint)
-                {
-                    DurationRepairType_Textbox.Clear();
-                }
-            }
-        }
-
         private void Search_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateRepair();
         }
+
+        private bool TryInt(string tryint)
+        {
+            int num;
+            bool flag = int.TryParse(tryint, out num);
+            return flag;
+        }
+
     }
 }
