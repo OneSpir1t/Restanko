@@ -215,6 +215,7 @@ namespace Restanko.Windows
                         RestankoContext.restankoContext.SaveChanges();
                         ClearTypeRepairTextBox();
                         UpdateTypeRepair();
+                        MessageBox.Show("Вид ремонта успешно добавлен", "Уведомление");
                     }
                 }
                 
@@ -237,6 +238,7 @@ namespace Restanko.Windows
                     currentRepairType.Duration = int.Parse(DurationRepairType_Textbox.Text);
                     RestankoContext.restankoContext.SaveChanges();
                     UpdateTypeRepair();
+                    MessageBox.Show("Вид ремонта успешно изменён", "Уведомление");
                 }
             }
 
@@ -247,12 +249,16 @@ namespace Restanko.Windows
             Repair repair = RestankoContext.restankoContext.Repairs.FirstOrDefault(r => r.RepairType == currentRepairType);
             if (repair == null)
             {
-                RestankoContext.restankoContext.Remove(currentRepairType);
-                RestankoContext.restankoContext.SaveChanges();
-                UpdateTypeRepair();
-                ClearTypeRepairTextBox();
-                TypeRapair_Combobox.SelectedIndex = 0;
-
+                var msg = MessageBox.Show("Вы дейтсвительно хотите удалить вид ремонта?", "Предупреждение", MessageBoxButton.YesNo);
+                if (msg == MessageBoxResult.Yes)
+                {
+                    RestankoContext.restankoContext.Remove(currentRepairType);
+                    RestankoContext.restankoContext.SaveChanges();
+                    UpdateTypeRepair();
+                    ClearTypeRepairTextBox();
+                    TypeRapair_Combobox.SelectedIndex = 0;
+                    MessageBox.Show("Вид ремонта успешно удалён", "Уведомление");
+                }
             }
             else
             {

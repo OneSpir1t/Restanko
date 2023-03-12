@@ -89,10 +89,11 @@ namespace Restanko.Windows
                     RestankoContext.restankoContext.SaveChanges();
                     if(photoMachine != null)
                     {
-                        string img = System.IO.Path.GetFileName(photoMachine);
+                        string img = System.IO.Path.GetRandomFileName();
                         File.Copy(photoMachine, mainPhotosPath + img, true);
                         Machine.Image = img;
                     }
+                    MessageBox.Show("Станок успешно добавлен", "Уведомление");
                     Close();
                 }
             }
@@ -100,7 +101,7 @@ namespace Restanko.Windows
             {
                 if (photoMachine != null)
                 {
-                    string img = System.IO.Path.GetFileName(photoMachine);
+                    string img = System.IO.Path.GetRandomFileName();
                     File.Copy(photoMachine, mainPhotosPath + img, true);
                     Machine.Image = img;
                 }
@@ -109,6 +110,7 @@ namespace Restanko.Windows
                 Machine.Name = NameMachine_Textbox.Text;
                 Machine.YearOfManufacture = (int)YearOfManufacture_Combobox.SelectedItem;
                 RestankoContext.restankoContext.SaveChanges();
+                MessageBox.Show("Станок успешно изменён", "Уведомление");
                 Close();
             }
         }
