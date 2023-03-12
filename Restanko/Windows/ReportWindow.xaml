@@ -11,6 +11,7 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="Выберите начальную дату:"/>
             <DatePicker Name="StartDate_DatePicker"/>
+            <Label Content="Выберите конечную дату:"/>
             <DatePicker Name="EndDate_DatePicker"/>
             <Button Content="Сформировать очёт" Name="CreateReport_Button" Click="CreateReport_Button_Click"/>
         </StackPanel>

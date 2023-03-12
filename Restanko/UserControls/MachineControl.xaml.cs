@@ -21,7 +21,8 @@ namespace Restanko.UserControls
     /// </summary>
     public partial class MachineControl : UserControl
     {
-        public Machine Machine { get; set; }    
+        public Machine Machine { get; set; }
+        string mainPhotosPath = Environment.CurrentDirectory + "/MachineImage/";
         public MachineControl(Machine machine)
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace Restanko.UserControls
             YearOfManufacture_Label.Content = Machine.YearOfManufacture;
             if (Machine.Image!= null)
             {
-
+                Machine_Image.Source = new BitmapImage(new Uri(mainPhotosPath + Machine.Image)); 
             }
             else
             {

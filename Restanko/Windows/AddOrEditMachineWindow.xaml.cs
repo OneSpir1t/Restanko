@@ -1,6 +1,8 @@
-﻿using Restanko.Entities;
+﻿using Microsoft.Win32;
+using Restanko.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,8 @@ namespace Restanko.Windows
     public partial class AddOrEditMachineWindow : Window
     {
         private Machine Machine { get; set; }
+        private string photoMachine;
+        string mainPhotosPath = Environment.CurrentDirectory + "/MachineImage/";
 
         public AddOrEditMachineWindow(Machine machine)
         {
@@ -45,9 +49,9 @@ namespace Restanko.Windows
                 NameMachine_Textbox.Text = Machine.Name;
                 MachineType_Combobox.SelectedItem = Machine.MachineType;
                 YearOfManufacture_Combobox.SelectedItem = Machine.YearOfManufacture;
-                if(Machine.Image != null)
+                if(!string.IsNullOrEmpty(Machine.Image))
                 {
-
+                    Machine_Image.Source = new BitmapImage(new Uri(mainPhotosPath + Machine.Image));
                 }
                 else
                 {
@@ -83,11 +87,23 @@ namespace Restanko.Windows
                     Machine.YearOfManufacture = (int)YearOfManufacture_Combobox.SelectedItem;
                     RestankoContext.restankoContext.Add(Machine);
                     RestankoContext.restankoContext.SaveChanges();
+                    if(photoMachine != null)
+                    {
+                        string img = System.IO.Path.GetFileName(photoMachine);
+                        File.Copy(photoMachine, mainPhotosPath + img, true);
+                        Machine.Image = img;
+                    }
                     Close();
                 }
             }
             else
             {
+                if (photoMachine != null)
+                {
+                    string img = System.IO.Path.GetFileName(photoMachine);
+                    File.Copy(photoMachine, mainPhotosPath + img, true);
+                    Machine.Image = img;
+                }
                 Machine.Mark = (Mark)Mark_Combobox.SelectedItem;
                 Machine.MachineType = (Machinetype)MachineType_Combobox.SelectedItem;
                 Machine.Name = NameMachine_Textbox.Text;
@@ -114,6 +130,17 @@ namespace Restanko.Windows
             {
                 MessageBox.Show("Станок содержится в заказе на ремонт", "Уведомление");
             }
+        }
+
+        private void AddOrEditImage_Bitton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Png files *.png| *.png*;|Jpg files *.jpg| *.jpg*;| Webp files *.webp | *.webp*";
+            if(ofd.ShowDialog() == true)
+            {
+                photoMachine = ofd.FileName;
+                Machine_Image.Source = new BitmapImage(new Uri(photoMachine));
+            }    
         }
     }
 }

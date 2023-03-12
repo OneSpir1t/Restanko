@@ -37,16 +37,10 @@ namespace Restanko.Windows
             Machine_Combobox.ItemsSource = RestankoContext.restankoContext.Machines.ToList();
             RepairType_Combobox.Items.Clear();
             RepairType_Combobox.ItemsSource = RestankoContext.restankoContext.Repairtypes.ToList();
-            if(user != null )
-            {
-                if(user.RoleId != 1)
-                {
-                    DeleteRepair_Button.Visibility = Visibility.Hidden;
-                }
-            }
             if (Repair != null)
             {
                 AddOrEditRepair_Button.Content = "Изменить";
+                IdRepair_Label.Content = "№" + repair.Id;
                 Machine_Combobox.SelectedItem = Repair.Machine;
                 RepairType_Combobox.SelectedItem = Repair.RepairType;
                 date = Repair.DateOfRepair;
@@ -54,6 +48,7 @@ namespace Restanko.Windows
             }
             else
             {
+                
                 DeleteRepair_Button.Visibility = Visibility.Hidden;
                 int year = Int32.Parse(DateTime.Now.ToString("yyyy"));
                 int month = Int32.Parse(DateTime.Now.ToString("MM"));

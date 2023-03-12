@@ -162,6 +162,7 @@ namespace Restanko.Windows
         private void Machine_Button_Click(object sender, RoutedEventArgs e)
         {
             var mw = new MachineWindow().ShowDialog();
+            UpdateRepair();
         }
 
         private void Sort_Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -23,6 +23,7 @@ namespace Restanko.UserControls
     public partial class RepairControl : UserControl
     {
         public Repair Repair { get; set; }
+        string mainPhotosPath = Environment.CurrentDirectory + "/MachineImage/";
         public RepairControl(Repair repair)
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace Restanko.UserControls
             DateEndRepair_Label.Content = Repair.DateEndOfRepair;
             if(Repair.Machine.Image != null)
             {
-
+                Machine_Image.Source = new BitmapImage(new Uri(mainPhotosPath + Repair.Machine.Image));
             }
             else
             {

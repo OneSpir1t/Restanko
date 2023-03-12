@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
         <StackPanel Width="300" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label x:Name="IdRepair_Label"/>
+            <Label x:Name="IdRepair_Label" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <ComboBox Name="Machine_Combobox" SelectedIndex="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>

@@ -21,7 +21,7 @@
                 <Border BorderThickness="1" BorderBrush="Black" CornerRadius="5" Height="200" Width="200" Margin="10,10,10,10" Grid.Column="1">
                     <Image x:Name="Machine_Image"/>
                 </Border>
-                <Button HorizontalAlignment="Center" Margin="20,5,20,0" Grid.Column="1" Content="Добавить" Name="AddOrEditImage_Bitton"/>
+                <Button HorizontalAlignment="Center" Margin="20,5,20,0" Grid.Column="1" Content="Добавить" Name="AddOrEditImage_Bitton" Click="AddOrEditImage_Bitton_Click"/>
             </StackPanel>
             <Label Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="Id_Label" />
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
