@@ -61,10 +61,10 @@ namespace Restanko.Windows
                 date = new DateOnly(year, month, day);
                 DateOfRepair_Label.Content = date;
             }
-            UpdateRepair();
+            UpdateRepairDate();
         }
 
-        private void UpdateRepair()
+        private void UpdateRepairDate()
         {          
             Duration_Label.Content = currentRepairType.Duration + " дн(я/ей)";
             dateEnd = date.AddDays(currentRepairType.Duration);
@@ -92,7 +92,7 @@ namespace Restanko.Windows
         private void RepairType_Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentRepairType = (Repairtype)RepairType_Combobox.SelectedItem;
-            UpdateRepair();
+            UpdateRepairDate();
         }
 
         private void AddOrEditRepair_Button_Click(object sender, RoutedEventArgs e)

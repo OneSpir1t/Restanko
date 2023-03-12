@@ -39,7 +39,7 @@ namespace Restanko.Windows {
     /// <summary>
     /// MainWindow
     /// </summary>
-    public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
+    public partial class UserWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
         #line 30 "..\..\..\..\Windows\MainWindow.xaml"
@@ -242,13 +242,13 @@ namespace Restanko.Windows {
             case 1:
             
             #line 8 "..\..\..\..\Windows\MainWindow.xaml"
-            ((Restanko.Windows.MainWindow)(target)).Closing += new System.ComponentModel.CancelEventHandler(this.Window_Closing);
+            ((Restanko.Windows.UserWindow)(target)).Closing += new System.ComponentModel.CancelEventHandler(this.Window_Closing);
             
             #line default
             #line hidden
             
             #line 8 "..\..\..\..\Windows\MainWindow.xaml"
-            ((Restanko.Windows.MainWindow)(target)).SizeChanged += new System.Windows.SizeChangedEventHandler(this.Window_SizeChanged);
+            ((Restanko.Windows.UserWindow)(target)).SizeChanged += new System.Windows.SizeChangedEventHandler(this.Window_SizeChanged);
             
             #line default
             #line hidden

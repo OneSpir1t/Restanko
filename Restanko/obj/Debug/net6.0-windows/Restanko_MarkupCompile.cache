@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\79871\source\repos\Restanko\Restanko\App.xaml
-8552058384
+8143531739
 1-813999304
-19-960256792
+19-1711230337
 216-376577947
-UserControls\MachineControl.xaml;UserControls\RepairControl.xaml;Windows\AddOrEditMachineWindow.xaml;Windows\AddOrEditRepairWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\MachineWindow.xaml;Windows\MainWindow.xaml;Windows\ReportWindow.xaml;
+UserControls\MachineControl.xaml;UserControls\RepairControl.xaml;Windows\AddOrEditMachineWindow.xaml;Windows\AddOrEditRepairWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\MachineWindow.xaml;Windows\ReportWindow.xaml;Windows\UserWindow.xaml;
 
 False
 

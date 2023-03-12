@@ -23,7 +23,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox/>
+            <TextBox x:Name="Search_TextBox" TextChanged="Search_TextBox_TextChanged"/>
             <ComboBox SelectedIndex="0" Name="Sort_Combobox" Grid.Column="2" SelectionChanged="Sort_Combobox_SelectionChanged"/>
             <ComboBox SelectedIndex="0" Name="Filter_Combobox" Grid.Column="3" SelectionChanged="Filter_Combobox_SelectionChanged"/>
         </Grid>

@@ -22,7 +22,7 @@
     <Compile Update="Windows\MachineWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\MainWindow.xaml.cs">
+    <Compile Update="Windows\UserWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\ReportWindow.xaml.cs">
@@ -45,7 +45,7 @@
     <Page Update="Windows\MachineWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\MainWindow.xaml">
+    <Page Update="Windows\UserWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\ReportWindow.xaml">

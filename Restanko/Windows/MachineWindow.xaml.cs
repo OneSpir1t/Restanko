@@ -48,7 +48,12 @@ namespace Restanko.Windows
             DisplayMachine = RestankoContext.restankoContext.Machines.ToList();
             if (DisplayMachine.Count > 0)
             {
-                switch(Sort_Combobox.SelectedIndex)
+                if (!string.IsNullOrEmpty(Search_TextBox.Text))
+                {
+                    DisplayMachine = DisplayMachine.Where(m => m.Name.ToLower().Contains(Search_TextBox.Text.ToLower()) || m.Mark.Name.ToLower().Contains(Search_TextBox.Text.ToLower()) || m.MachineType.Name.ToLower().Contains(Search_TextBox.Text.ToLower())).ToList();
+                    
+                }
+                switch (Sort_Combobox.SelectedIndex)
                 {
                     case 1:
                         DisplayMachine = DisplayMachine.OrderBy(m => m.YearOfManufacture).ToList();
@@ -67,7 +72,7 @@ namespace Restanko.Windows
                     MachineView_ListView.Items.Add(new MachineControl(machine) { Width = GetNormalWidth() });
                 }
             }
-            else
+            if (DisplayMachine.Count < 1)
             {
                 NotFound_Label.Visibility = Visibility.Visible;
             }
@@ -131,6 +136,11 @@ namespace Restanko.Windows
                 var aoem = new AddOrEditMachineWindow(currentMachine).ShowDialog();
                 UpdateMachine();
             }
+        }
+
+        private void Search_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateMachine();
         }
     }
 }

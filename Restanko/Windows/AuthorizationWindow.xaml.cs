@@ -30,7 +30,6 @@ namespace Restanko.Windows
         {
             InitializeComponent();
             RestankoContext.restankoContext.Database.OpenConnection();
-            //User = RestankoContext.restankoContext.Users.FirstOrDefault(u => u.Login == Login_TextBox.Text && u.Password == Password_TextBox.Text);
         }
 
         private void LogIn_Button_Click(object sender, RoutedEventArgs e)
@@ -69,7 +68,7 @@ namespace Restanko.Windows
             Hide();
             Password_TextBox.Text = default;
             Login_TextBox.Text = default;
-            var mw = new MainWindow(User);
+            var mw = new UserWindow(User);
             mw.Owner = this;
             mw.Show();
 
